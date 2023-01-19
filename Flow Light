@@ -1,0 +1,1144 @@
+[
+    {
+        "id": "9023c141df02988a",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c017b7faed2b1e40",
+        "type": "ui_led",
+        "z": "9023c141df02988a",
+        "order": 1,
+        "group": "4970a7bb82955dce",
+        "width": 2,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#808080",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a1ffe2a05e27abf5",
+        "type": "change",
+        "z": "9023c141df02988a",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "Cooling Fan On",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "Cooling Fan Off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 220,
+        "wires": [
+            [
+                "133e294029bae0f9",
+                "5b748263c1991c92"
+            ]
+        ]
+    },
+    {
+        "id": "133e294029bae0f9",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "4970a7bb82955dce",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Cooling Fan Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1050,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5b748263c1991c92",
+        "type": "debug",
+        "z": "9023c141df02988a",
+        "name": "debug 24",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "370fa756ae5db94b",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Fan On",
+        "func": "var signal = msg.payload //from previous node\nvar dts = new Date ().toLocaleString () //human readable timestamp\nvar e = new Date().toString()\n\nmsg.payload = {\n   e\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 300,
+        "wires": [
+            [
+                "2d368e53ae83587c"
+            ]
+        ]
+    },
+    {
+        "id": "aeb137ee8c0fb3df",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Fan Off",
+        "func": "var signal = msg.payload //from previous node\nvar dts = new Date ().toLocaleString () //human readable timestamp\nvar e = new Date().toString()\n\nmsg.payload = {\n   e\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 380,
+        "wires": [
+            [
+                "8c11d8c407b55d96"
+            ]
+        ]
+    },
+    {
+        "id": "8c11d8c407b55d96",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "4970a7bb82955dce",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Cooling Fan Off at",
+        "format": "{{msg.payload.e}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1030,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "2d368e53ae83587c",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "4970a7bb82955dce",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Cooling Fan On at",
+        "format": "{{msg.payload.e}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1030,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "a40118ff292f9cc1",
+        "type": "ui_led",
+        "z": "9023c141df02988a",
+        "order": 1,
+        "group": "96b2bad443e9fe0c",
+        "width": 2,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#808080",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ffff00",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 730,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f087d12bedc151bc",
+        "type": "change",
+        "z": "9023c141df02988a",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "Heater Element On",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "Heater Element Off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 560,
+        "wires": [
+            [
+                "eefdda2a7581df2c",
+                "6e87471b4407a863"
+            ]
+        ]
+    },
+    {
+        "id": "eefdda2a7581df2c",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "96b2bad443e9fe0c",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Heater Element Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1020,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6e87471b4407a863",
+        "type": "debug",
+        "z": "9023c141df02988a",
+        "name": "debug 25",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "569b274964110546",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Heater On",
+        "func": "var signal = msg.payload //from previous node\nvar dts = new Date ().toLocaleString () //human readable timestamp\nvar e = new Date().toString()\n\nmsg.payload = {\n   e\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 640,
+        "wires": [
+            [
+                "8bb36d37a7222cd3"
+            ]
+        ]
+    },
+    {
+        "id": "58d460479b05efe2",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": " Heater Off",
+        "func": "var signal = msg.payload //from previous node\nvar dts = new Date ().toLocaleString () //human readable timestamp\nvar e = new Date().toString()\n\nmsg.payload = {\n   e\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 720,
+        "wires": [
+            [
+                "e0a62946f32319f1"
+            ]
+        ]
+    },
+    {
+        "id": "e0a62946f32319f1",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "96b2bad443e9fe0c",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Heater Off at",
+        "format": "{{msg.payload.e}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 990,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "8bb36d37a7222cd3",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "96b2bad443e9fe0c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Heater On at",
+        "format": "{{msg.payload.e}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 990,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "9c0e92f8a3732389",
+        "type": "ui_led",
+        "z": "9023c141df02988a",
+        "order": 1,
+        "group": "76d62e7b3d5a96c2",
+        "width": 2,
+        "height": 1,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#808080",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 670,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "0d4e20c699030a73",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "76d62e7b3d5a96c2",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Line Status",
+        "format": "<font color = {{msg.payload.color}}>{{msg.payload.component}}</color>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "6b9dbba0a74e9cac",
+        "type": "debug",
+        "z": "9023c141df02988a",
+        "name": "debug 26",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "76d2c13dd6effb3d",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Line Off",
+        "func": "var signal = msg.payload //from previous node\nvar dts = new Date ().toLocaleString () //human readable timestamp\nvar e = new Date().toString()\nvar color \n\nmsg.payload = {\n   e : e ,\n   color: \"red\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 1160,
+        "wires": [
+            [
+                "a94c791a079bf04f"
+            ]
+        ]
+    },
+    {
+        "id": "12281514a4df6652",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Line On",
+        "func": "var signal = msg.payload //from previous node\nvar dts = new Date ().toLocaleString () //human readable timestamp\nvar e = new Date().toString()\n\nmsg.payload = {\n   e\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 1080,
+        "wires": [
+            [
+                "a9794ee69a5d2757"
+            ]
+        ]
+    },
+    {
+        "id": "a9794ee69a5d2757",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "76d62e7b3d5a96c2",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Line RESUME at",
+        "format": "{{msg.payload.e}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "a94c791a079bf04f",
+        "type": "ui_text",
+        "z": "9023c141df02988a",
+        "group": "76d62e7b3d5a96c2",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Line STOOPED at",
+        "format": "<font color = {{msg.payload.color}}>{{msg.payload.e}}</color>",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1130,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "3f87e3f438090b6e",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Dashboard noti",
+        "func": "var e = new Date ().toString ()\n\nmsg.payload = \"DG-G TEMPERATURE TEST MACHINE STOPPED! at \" + e + \" \"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 1240,
+        "wires": [
+            [
+                "7ea4f5ced6cabc1c"
+            ]
+        ]
+    },
+    {
+        "id": "7ea4f5ced6cabc1c",
+        "type": "ui_toast",
+        "z": "9023c141df02988a",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1130,
+        "y": 1240,
+        "wires": [
+            [
+                "7d02448d06a4dc38"
+            ]
+        ]
+    },
+    {
+        "id": "7d02448d06a4dc38",
+        "type": "debug",
+        "z": "9023c141df02988a",
+        "name": "debug 27",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "2dd7a24c0019d539",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Telegram noti",
+        "func": "var chatId = 443993498 //my group chat id\nvar type = \"message\"\nvar e = new Date().toString ()\nvar content = \"ALERT! DG-G TEMPERATURE TEST MACHINE STOPPED! AT \" + e + \". \\nMr. ADIB, \"+\n\"\\nPlease attend and take necessary actions urgently!\"\n\nmsg.payload = {\n    chatId: chatId, //chatID\n    type: type, //Jenis data yg kita hantar\n    content: content //Data yg kita hantar\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 1320,
+        "wires": [
+            [
+                "5be1f42ac04f31c1"
+            ]
+        ]
+    },
+    {
+        "id": "5be1f42ac04f31c1",
+        "type": "telegram sender",
+        "z": "9023c141df02988a",
+        "name": "",
+        "bot": "057916a110d0a67e",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1130,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dbf61ca0d655574f",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Email noti Line Engineer",
+        "func": "var to = \"muhamadadib5885@gmail.com\" //email penerima\nvar topic = \"ALERT! DG-G TEMPERATURE TEST MACHINE STOPPED!\" //tajuk email\nvar e = new Date().toString ()\nvar content = \"The DG-G TEMPERATURE TEST MACHINE was stopped at \" + e + \".\\nPlease log the cause and action taken by the line technician Mr. Adib into the Production Event Logging System.\"\n\n\nmsg.to = to\nmsg.topic = topic\nmsg.payload = content\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 1400,
+        "wires": [
+            [
+                "a49d9c71452bd3d6",
+                "baab4b62c9ddd4b9"
+            ]
+        ]
+    },
+    {
+        "id": "a49d9c71452bd3d6",
+        "type": "e-mail",
+        "z": "9023c141df02988a",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "muhamadadib5885@gmail.com",
+        "dname": "",
+        "x": 1170,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "baab4b62c9ddd4b9",
+        "type": "e-mail",
+        "z": "9023c141df02988a",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "mechatorial@gmail.com",
+        "dname": "",
+        "x": 1150,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "33d55c0f9e6bd571",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Email noti Production Manager",
+        "func": "var to = \"muhamadadib5885@gmail.com\" //email penerima\nvar topic = \"ALERT! DG-G TEMPERATURE TEST MACHINE STOPPED!\" //tajuk email\nvar e = new Date().toString ()\nvar content = \"The DG-G TEMPERATURE TEST MACHINE was stopped at \" + e + \".\\nPlease monitor and check if necessary.\"\n\n\nmsg.to = to\nmsg.topic = topic\nmsg.payload = content\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 1520,
+        "wires": [
+            [
+                "1610c975c57ef553"
+            ]
+        ]
+    },
+    {
+        "id": "1610c975c57ef553",
+        "type": "e-mail",
+        "z": "9023c141df02988a",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "noor.zamri@gmail.com",
+        "dname": "",
+        "x": 1180,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "33708743442d7c14",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Line On",
+        "func": "var signal = msg.payload //from previous node\nvar component = \"DG-G TEST MACHINE ONLINE.\"\nvar e = new Date().toString()\nvar color \n\nmsg.payload = {\n   component : component ,\n   color: \"green\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 820,
+        "wires": [
+            [
+                "0d4e20c699030a73",
+                "6b9dbba0a74e9cac"
+            ]
+        ]
+    },
+    {
+        "id": "03468dc3ed16f5ba",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "Line Off",
+        "func": "var signal = msg.payload //from previous node\nvar component = \"DG-G TEST MACHINE STOPPED!\"\nvar e = new Date().toString()\nvar color \n\nmsg.payload = {\n   component : component ,\n   color: \"red\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 920,
+        "wires": [
+            [
+                "6b9dbba0a74e9cac",
+                "0d4e20c699030a73"
+            ]
+        ]
+    },
+    {
+        "id": "26b68fbb67948ae3",
+        "type": "function",
+        "z": "9023c141df02988a",
+        "name": "function 21",
+        "func": "var signal = msg.payload //from previous node\nvar status = \"DG-G TEMPERATURE TEST MACHINE STOPPED\"\nvar ts = new Date ().getTime() //13 digit timestamp\nvar dts = new Date ().toLocaleString (\"sv-SE\") //human readable timestamp\n\nmsg.payload = {\n    status : status,\n    dts : dts,\n    ts : ts\n    \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 1000,
+        "wires": [
+            [
+                "866e0fadafcbde2d"
+            ]
+        ]
+    },
+    {
+        "id": "866e0fadafcbde2d",
+        "type": "csv",
+        "z": "9023c141df02988a",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "once",
+        "multi": "one",
+        "ret": "\\r\\n",
+        "temp": "status ,dts, ts",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 1010,
+        "y": 1000,
+        "wires": [
+            [
+                "396493a4200da6bc"
+            ]
+        ]
+    },
+    {
+        "id": "396493a4200da6bc",
+        "type": "file",
+        "z": "9023c141df02988a",
+        "name": "",
+        "filename": "C:\\Users\\suhaimi\\Desktop\\EC-02\\Machine.csv",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1320,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0efec06ad365b405",
+        "type": "mqtt in",
+        "z": "9023c141df02988a",
+        "name": "",
+        "topic": "AdibEC-02@D10",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "453b53a1f3e0b00e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "7848b56d5d471b50"
+            ]
+        ]
+    },
+    {
+        "id": "d97eb753f1b94beb",
+        "type": "mqtt in",
+        "z": "9023c141df02988a",
+        "name": "",
+        "topic": "AdibEC-02@D11",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "453b53a1f3e0b00e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "a9115b8f50ee51bb"
+            ]
+        ]
+    },
+    {
+        "id": "1c6c8803416e79d4",
+        "type": "mqtt in",
+        "z": "9023c141df02988a",
+        "name": "",
+        "topic": "AdibEC-02@D12",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "453b53a1f3e0b00e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 880,
+        "wires": [
+            [
+                "f003fd0882c6189c"
+            ]
+        ]
+    },
+    {
+        "id": "7848b56d5d471b50",
+        "type": "change",
+        "z": "9023c141df02988a",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "0279b180437d3717"
+            ]
+        ]
+    },
+    {
+        "id": "0279b180437d3717",
+        "type": "switch",
+        "z": "9023c141df02988a",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "a1ffe2a05e27abf5",
+                "370fa756ae5db94b",
+                "c017b7faed2b1e40"
+            ],
+            [
+                "a1ffe2a05e27abf5",
+                "aeb137ee8c0fb3df",
+                "c017b7faed2b1e40"
+            ]
+        ]
+    },
+    {
+        "id": "a9115b8f50ee51bb",
+        "type": "change",
+        "z": "9023c141df02988a",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 560,
+        "wires": [
+            [
+                "cf06b8df8d3a69a6"
+            ]
+        ]
+    },
+    {
+        "id": "cf06b8df8d3a69a6",
+        "type": "switch",
+        "z": "9023c141df02988a",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 510,
+        "y": 560,
+        "wires": [
+            [
+                "f087d12bedc151bc",
+                "569b274964110546",
+                "a40118ff292f9cc1"
+            ],
+            [
+                "f087d12bedc151bc",
+                "58d460479b05efe2",
+                "a40118ff292f9cc1"
+            ]
+        ]
+    },
+    {
+        "id": "f003fd0882c6189c",
+        "type": "change",
+        "z": "9023c141df02988a",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 880,
+        "wires": [
+            [
+                "9ff70f4cbead0957"
+            ]
+        ]
+    },
+    {
+        "id": "9ff70f4cbead0957",
+        "type": "switch",
+        "z": "9023c141df02988a",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 880,
+        "wires": [
+            [
+                "9c0e92f8a3732389",
+                "33708743442d7c14",
+                "12281514a4df6652"
+            ],
+            [
+                "9c0e92f8a3732389",
+                "26b68fbb67948ae3",
+                "76d2c13dd6effb3d",
+                "3f87e3f438090b6e",
+                "2dd7a24c0019d539",
+                "dbf61ca0d655574f",
+                "33d55c0f9e6bd571",
+                "03468dc3ed16f5ba"
+            ]
+        ]
+    },
+    {
+        "id": "4970a7bb82955dce",
+        "type": "ui_group",
+        "name": "Cooling Fan ",
+        "tab": "e61c8891d8c52941",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "96b2bad443e9fe0c",
+        "type": "ui_group",
+        "name": "Heater Element",
+        "tab": "e61c8891d8c52941",
+        "order": 3,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "76d62e7b3d5a96c2",
+        "type": "ui_group",
+        "name": "Line Status",
+        "tab": "e61c8891d8c52941",
+        "order": 4,
+        "disp": true,
+        "width": 8,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "057916a110d0a67e",
+        "type": "telegram bot",
+        "botname": "fk8_bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "453b53a1f3e0b00e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "http://192.168.4.133/",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e61c8891d8c52941",
+        "type": "ui_tab",
+        "name": "ASSESEMENT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
